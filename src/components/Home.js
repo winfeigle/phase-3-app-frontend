@@ -1,6 +1,7 @@
 import React from "react";
 
 function Home(){
+    
     return(
         <div id="home-container">
             <h3>Flatiron School Phase 3 React/Ruby Project</h3>
