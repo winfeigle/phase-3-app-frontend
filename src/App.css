@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+/* Restaurant tags */
+p.tag{
+  padding: 3px 10px;
+  margin: auto;
+  font-size: .8rem;
+  width: min-content;
+  color: #665BF7;
+  border: solid #665BF7 1px;
+  border-radius: 5px;
+  background-color: #655bf71c;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

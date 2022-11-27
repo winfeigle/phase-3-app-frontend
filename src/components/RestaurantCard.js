@@ -4,13 +4,9 @@ function RestaurantCard({restaurant}){
     const {id, name, address, tag} = restaurant;
 
     return(
-        <div>
-            <p>
-            {id}
-            {name}
-            {address}
-            {tag}
-            </p>
+        <div className="card">
+            <h2><b>{name}</b></h2>
+            <p className="tag">{tag}</p>
         </div>
     );
 
