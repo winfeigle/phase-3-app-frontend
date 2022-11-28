@@ -1,9 +1,8 @@
 import React from "react";
+import MealPlans from "./MealPlans";
 
 function RestaurantCard({restaurant}){
-    // const [mealPlans, setMealPlans] = useState([]);
     const {id, name, address, tag, logo_url} = restaurant;
-
 
     return(
         <div className="restaurant-card">
@@ -16,6 +15,7 @@ function RestaurantCard({restaurant}){
                 {/* <img> PLACE IMAGE HERE </img> */}
             </div>
             <p className="address">{address}</p>
+            <MealPlans restaurant={restaurant}/>
         </div>
     );
 
