@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MealPlans from "./MealPlans";
 
 function RestaurantCard({restaurant}){
     const {id, name, address, tag, logo_url} = restaurant;
+    const [mealPlans, setMealPlans] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:9292/restaurants/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setMealPlans(data.meal_plans)
+            })
+      }, [id]);
 
     return(
         <div className="restaurant-card">
@@ -15,7 +24,9 @@ function RestaurantCard({restaurant}){
                 {/* <img> PLACE IMAGE HERE </img> */}
             </div>
             <p className="address">{address}</p>
-            <MealPlans restaurant={restaurant}/>
+            <MealPlans 
+                mealPlans={mealPlans}
+                />
         </div>
     );
 
