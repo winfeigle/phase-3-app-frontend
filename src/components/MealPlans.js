@@ -1,12 +1,23 @@
 import React from "react";
 
-function MealPlans({restaurant}){
+function MealPlans({mealPlans}){
+
+    // console.log(mealPlans)
     
+    const renderMealPlans = mealPlans.map(plan => {
+        const {id, name, number_of_meals } = plan;
+        return(
+            <div key={id}>
+                <p>
+                    {`${name} Meal Plan: ${number_of_meals} meals`}
+                </p>
+            </div>
+        )
+    })
     
     return(
         <div>
-            {/* This is running twice... */}
-            {console.log(`${restaurant.name} Meal Plans running...`)}
+            {renderMealPlans}
         </div>
     )
 
