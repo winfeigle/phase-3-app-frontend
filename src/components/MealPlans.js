@@ -1,13 +1,23 @@
 import React from "react";
 
-function MealPlans({mealPlans}){
+function MealPlans({restaurantName, mealPlans}){
 
 
     const renderMealplan = mealPlans.map(plan => {
-        const {id, name, number_of_meals } = plan;
+        const {id, name, number_of_meals, price } = plan;
         return(
             <div key={id} className="mealplan-card">
-                {`${name} Feedplan: ${number_of_meals} meals`}
+                <div className="mealplan-info">
+                    <span className="mealplan-name">
+                        {`${name} Feedplan`}
+                    </span>
+                    <span className="mealplan-meals">
+                        {`${number_of_meals} meals`}
+                    </span>
+                </div>
+                <div className="mealplan-price">
+                    <b>{`$${price}.00`}</b>
+                </div>
             </div>
         )
     })
