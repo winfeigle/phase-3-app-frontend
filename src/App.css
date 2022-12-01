@@ -145,7 +145,8 @@ body{
   .mealplan-info{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
+    margin-left: 20px;
   }
 
     .mealplan-name{
@@ -153,6 +154,7 @@ body{
     }
 
   .mealplan-price{
+    max-width: 20%;
     align-self: center;
   }
 

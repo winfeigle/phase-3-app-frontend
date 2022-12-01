@@ -1,12 +1,15 @@
 import React from "react";
 
-function MealPlans({restaurantName, mealPlans}){
+function MealPlans({mealPlans}){
 
 
     const renderMealplan = mealPlans.map(plan => {
         const {id, name, number_of_meals, price } = plan;
         return(
             <div key={id} className="mealplan-card">
+                <div className="mealplan-price">
+                    <b>{`$${price}.00`}</b>
+                </div>
                 <div className="mealplan-info">
                     <span className="mealplan-name">
                         {`${name} Feedplan`}
@@ -15,9 +18,7 @@ function MealPlans({restaurantName, mealPlans}){
                         {`${number_of_meals} meals`}
                     </span>
                 </div>
-                <div className="mealplan-price">
-                    <b>{`$${price}.00`}</b>
-                </div>
+
             </div>
         )
     })
