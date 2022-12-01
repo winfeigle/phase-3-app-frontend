@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MealPlans from "./MealPlans";
 
 function RestaurantCard({restaurant}){
-    const {id, name, address, tag, logo_url} = restaurant;
+    const {id, name, address, tag, logo_url, image_url} = restaurant;
     const [mealPlans, setMealPlans] = useState([]);
 
     useEffect(() => {
@@ -20,8 +20,8 @@ function RestaurantCard({restaurant}){
                 <img className="restaurant-logo" src={logo_url} alt="Restaurant logo"/>
                 <h2><b>{name}</b></h2>
             </div>
-            <div className="restaurant-image">
-                {/* <img> PLACE IMAGE HERE </img> */}
+            <div className="restaurant-image-container">
+                <img src={image_url} alt="Restaurant storefront"/>
             </div>
             <p className="address">{address}</p>
             <MealPlans 

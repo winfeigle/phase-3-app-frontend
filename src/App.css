@@ -56,6 +56,17 @@ body{
     padding: 1rem;
   }
 
+  .restaurant-image-container{
+    width: 100%;
+  }
+
+  .restaurant-image-container img{
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    /* object-position: 100% 0; */
+  }
+
     .restaurant-card p.tag{
       padding: 3px 10px;
       margin: 10px;
