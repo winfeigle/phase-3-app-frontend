@@ -38,6 +38,36 @@ body{
   background-color: #f5f5f5;
 }
 
+#content-container{
+  display: inline-flex;
+}
+
+.restaurant-requests-container{
+  position: static;
+  border: solid black 1px;
+}
+
+.restaurant-request-card{
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+button.upvote, button.downvote{
+  margin: 2px;
+}
+
+  button.upvote{
+    color:#157234;
+  }
+
+  button.downvote{
+    color:#a61e1e;
+  }
+
+
+
 
 #restaurant-container{
   display: flex;
