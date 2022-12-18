@@ -31,7 +31,6 @@ function RestaurantCard({restaurant}){
                 <span className="address">{address}</span>  
                 <span className="bio">{bio}</span>  
             </div>
-            
             <MealPlans
                 mealPlans={mealPlans}
                 />

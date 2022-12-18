@@ -19,17 +19,22 @@ function App() {
       .then(setRequests);
   }, []);
 
+
   return (
     <div className="App">
       <header>
         <h1>Feedplan Restaurants</h1>
       </header>
-      <RestaurantRequests 
-        requests={requests}
-        />
-      <Restaurants 
-        restaurants={restaurants}
-        />
+
+        <div id="content-container">
+              <RestaurantRequests 
+                      requests={requests}
+                      />
+
+              <Restaurants 
+                restaurants={restaurants}
+                />
+        </div>
     </div>
   );
 }

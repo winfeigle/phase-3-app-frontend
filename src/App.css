@@ -54,15 +54,15 @@ body{
 }
 
 
-button.upvote, button.downvote{
+button.upvotes, button.downvotes{
   margin: 2px;
 }
 
-  button.upvote{
+  button.upvotes{
     color:#157234;
   }
 
-  button.downvote{
+  button.downvotes{
     color:#a61e1e;
   }
 

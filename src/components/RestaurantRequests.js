@@ -1,19 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
+import RequestCard from "./RequestCard";
 
 function RestaurantRequests({requests}){
 
-    const renderRequests = requests.map(r => {
-        const {id, name, location} = r;
+    const renderRequests = requests.map(request => {
+        const {id, name, location, upvotes, downvotes} = request;
         return(
-            <div key={id}>
-                {`${name} – ${location}: ${r.request_votes.length} votes`}
-            </div>
+            <RequestCard 
+                key={id}
+                id={id}
+                name={name}
+                location={location}
+                upvotes={upvotes}
+                downvotes={downvotes}
+                />
         )
     })
 
 
     return(
-        <div>
+        <div className="restaurant-requests-container">
             {renderRequests}
         </div>
     )
