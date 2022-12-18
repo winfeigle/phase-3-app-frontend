@@ -1,29 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
-function RequestCard({id, name, location}){
+function RequestCard({id, name, location, onUpvoteClick}){
     const [voteCount, setVoteCount] = useState([])
 
-    useEffect(() => {
-        fetch(`http://localhost:9292/restaurant-requests/${id}`)
+    fetch(`http://localhost:9292/restaurant-votes/${id}`)
           .then(res => res.json())
-          .then((data) => setVoteCount(data.restaurant_votes.length));
-      }, [id]);
-
+          .then(setVoteCount);
+      
     
       const handleUpvoteClick = (e) => {
-        const restaurantId = e.target.value
+        setVoteCount(parseInt(e.target.value) + 1)
         
-        fetch(`http://localhost:9292/restaurant-requests/${id}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                vote: 1,
-                restaurant_request_id: restaurantId
-            })
-        })
+
+        onUpvoteClick(id)
       }
 
 
@@ -31,7 +20,7 @@ function RequestCard({id, name, location}){
         <div className="restaurant-request-card">
             <p><b>{name}</b> {location}</p>
                 <span>
-                    <button onClick={handleUpvoteClick} className="upvotes" value={id}>
+                    <button onClick={handleUpvoteClick} className="upvotes" value={voteCount}>
                         {voteCount}⬆
                         </button>
                 </span>
