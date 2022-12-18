@@ -1,18 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import RequestCard from "./RequestCard";
 
 function RestaurantRequests({requests}){
 
+
     const renderRequests = requests.map(request => {
-        const {id, name, location, upvotes, downvotes} = request;
+        const {id, name, location} = request;
         return(
             <RequestCard 
                 key={id}
                 id={id}
                 name={name}
                 location={location}
-                upvotes={upvotes}
-                downvotes={downvotes}
                 />
         )
     })

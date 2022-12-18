@@ -1,43 +1,38 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
-function RequestCard({id, name, location, upvotes, downvotes, onUpdateRequests}){
-    const [votes, setVotes] = useState({
-        "upvotes": upvotes,
-        "downvotes": downvotes
-})
+function RequestCard({id, name, location}){
+    const [voteCount, setVoteCount] = useState([])
 
-    const handleVoteClick = (e) => {
-        let userVote = e.target.className
+    useEffect(() => {
+        fetch(`http://localhost:9292/restaurant-requests/${id}`)
+          .then(res => res.json())
+          .then((data) => setVoteCount(data.restaurant_votes.length));
+      }, [id]);
+
+    
+      const handleUpvoteClick = (e) => {
+        const restaurantId = e.target.value
         
-        setVotes((votes) => {
-            userVote === "upvotes" ? votes.upvotes++ : votes.downvotes++;
-        })
-
         fetch(`http://localhost:9292/restaurant-requests/${id}`, {
-            method: "PATCH",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(votes)
-        })
-            .then(response => response.json())
-            .then((updatedRequest) => {
-                onUpdateRequests(updatedRequest)
+            body: JSON.stringify({
+                vote: 1,
+                restaurant_request_id: restaurantId
             })
-
-    }
+        })
+      }
 
 
     return(
         <div className="restaurant-request-card">
             <p><b>{name}</b> {location}</p>
                 <span>
-                    <button onClick={handleVoteClick} className="upvotes" value={upvotes}>
-                        {votes.upvotes}⬆
-                        </button>
-                    <button onClick={handleVoteClick} className="downvotes" value={downvotes}>
-                        {votes.downvotes}⬇
+                    <button onClick={handleUpvoteClick} className="upvotes" value={id}>
+                        {voteCount}⬆
                         </button>
                 </span>
         </div>
