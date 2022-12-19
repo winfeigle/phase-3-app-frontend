@@ -10,7 +10,6 @@ function RequestCard({id, name, location, onUpvoteClick}){
     
       const handleUpvoteClick = (e) => {
         setVoteCount(parseInt(e.target.value) + 1)
-        
 
         onUpvoteClick(id)
       }
@@ -18,12 +17,18 @@ function RequestCard({id, name, location, onUpvoteClick}){
 
     return(
         <div className="restaurant-request-card">
-            <p><b>{name}</b> {location}</p>
-                <span>
-                    <button onClick={handleUpvoteClick} className="upvotes" value={voteCount}>
-                        {voteCount}⬆
-                        </button>
-                </span>
+            <span className="restaurant-info">
+                <h3>{name}</h3>
+                <p>({location})</p>
+            </span>
+            <span className="restaurant-voting">
+                <button onClick={handleUpvoteClick} className="upvotes" value={voteCount}>
+                    {voteCount}⬆
+                    </button>
+                <button className="downvote">
+                    ⬇
+                    </button>
+            </span>
         </div>
     )
 

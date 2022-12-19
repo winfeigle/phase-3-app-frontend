@@ -36,6 +36,7 @@ function RestaurantRequests({requests}){
 
     return(
         <div className="restaurant-requests-container">
+            <h2 id="top-requests">Top Requests</h2>
             {renderRequests}
         </div>
     )
