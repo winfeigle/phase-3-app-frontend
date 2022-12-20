@@ -1,5 +1,6 @@
 import React from "react";
 import RequestCard from "./RequestCard";
+import RequestForm from "./RequestForm";
 
 function RestaurantRequests({requests}){
 
@@ -37,6 +38,7 @@ function RestaurantRequests({requests}){
     return(
         <div className="restaurant-requests-container">
             <h2 id="top-requests">Top Requests</h2>
+            <RequestForm />
             {renderRequests}
         </div>
     )

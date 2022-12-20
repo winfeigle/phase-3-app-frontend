@@ -13,6 +13,20 @@ function RestaurantCard({restaurant}){
             })
       }, [id]);
 
+      const onSubscribe = (mealPlanId) => {
+        // console.log(mealPlanId)
+        fetch(`http://localhost:9292/restaurants/meal-plans/${mealPlanId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify()
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+      }
+
     return(
         <div className="restaurant-card">
             <p className="tag">{tag}</p>
@@ -33,6 +47,7 @@ function RestaurantCard({restaurant}){
             </div>
             <MealPlans
                 mealPlans={mealPlans}
+                onSubscribe={onSubscribe}
                 />
         </div>
     );
