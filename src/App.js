@@ -26,6 +26,10 @@ function App() {
   })
   }
 
+  const onUpdateRequests = (newRequest) => {
+    // New request submission should rerender page
+  }
+
 
   return (
     <div className="App">
@@ -37,6 +41,7 @@ function App() {
               <RestaurantRequests 
                       requests={requests}
                       deleteRequest={onDeleteRequest}
+                      updateRequests={onUpdateRequests}
                       />
 
               <Restaurants 

@@ -2,7 +2,7 @@ import React from "react";
 import RequestCard from "./RequestCard";
 import RequestForm from "./RequestForm";
 
-function RestaurantRequests({requests, deleteRequest}){
+function RestaurantRequests({requests, deleteRequest, updateRequests}){
 
     const onUpvoteClick = (restaurantId) => {
         fetch(`http://localhost:9292/restaurant-votes`, {
@@ -36,8 +36,10 @@ function RestaurantRequests({requests, deleteRequest}){
 
     return(
         <div className="restaurant-requests-container">
-            <h2 id="top-requests">Top Requests</h2>
-            <RequestForm />
+            <RequestForm 
+                upvoteClick={onUpvoteClick}
+                updateRequests={updateRequests}
+                />
             {renderRequests}
         </div>
     )
