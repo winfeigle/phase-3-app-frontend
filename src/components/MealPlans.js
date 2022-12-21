@@ -1,13 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 
-function MealPlans({mealPlans, onSubscribe}){
-    const [subscribed, setSubscribed] = useState(false);
-
-    const handleSubscribeClick = (e) => {
-        setSubscribed(!subscribed)
-        let mealPlanId = e.target.value;
-        onSubscribe(mealPlanId)
-    }
+function MealPlans({mealPlans}){
 
 
     const renderMealplan = mealPlans.map(plan => {
@@ -29,7 +22,7 @@ function MealPlans({mealPlans, onSubscribe}){
                 </div>
                 
                 <div className="mealplan-subscribe">
-                    <button className={ subscribed ? "subscribed" : null} onClick={handleSubscribeClick}value={id}>{subscribed ? "Unsubscribe" : "Subscribe"}</button>
+                    <button>Subscribe</button>
                 </div>
             </div>
         )
