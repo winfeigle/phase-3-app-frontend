@@ -19,6 +19,12 @@ function App() {
       .then(setRequests);
   }, []);
 
+  const onDeleteRequest = (deleteId) => {
+    setRequests((requests) => requests.filter(request => request.id !== deleteId))
+    fetch(`http://localhost:9292/restaurant-requests/${deleteId}`, {
+      method: "DELETE"
+  })
+  }
 
 
   return (
@@ -30,6 +36,7 @@ function App() {
         <div id="content-container">
               <RestaurantRequests 
                       requests={requests}
+                      deleteRequest={onDeleteRequest}
                       />
 
               <Restaurants 

@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 
-function RequestCard({id, name, location, onUpvoteClick, onDeleteRequest}){
+function RequestCard({id, name, location, upvoteClick, deleteRequest}){
     const [voteCount, setVoteCount] = useState([])
 
     fetch(`http://localhost:9292/restaurant-requests/count/${id}`)
-          .then(res => res.json())
-          .then(setVoteCount);
+        .then(res => res.json())
+        .then(setVoteCount);
       
     
-      const handleUpvoteClick = (e) => {
-        setVoteCount(parseInt(e.target.value) + 1)
-        onUpvoteClick(id)
+      const handleUpvoteClick = () => {
+        setVoteCount((voteCount) => voteCount + 1)
+        upvoteClick(id)
       }
 
       const handleDownvoteClick = () => {
@@ -22,7 +22,7 @@ function RequestCard({id, name, location, onUpvoteClick, onDeleteRequest}){
                 if(remaining_votes > 0){
                     setVoteCount(remaining_votes)
                 } else {
-                    onDeleteRequest(id)
+                    deleteRequest(id)
                 }
             })
       }

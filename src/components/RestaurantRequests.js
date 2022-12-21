@@ -2,7 +2,7 @@ import React from "react";
 import RequestCard from "./RequestCard";
 import RequestForm from "./RequestForm";
 
-function RestaurantRequests({requests}){
+function RestaurantRequests({requests, deleteRequest}){
 
     const onUpvoteClick = (restaurantId) => {
         fetch(`http://localhost:9292/restaurant-votes`, {
@@ -16,16 +16,6 @@ function RestaurantRequests({requests}){
                 restaurant_request_id: restaurantId
             })
         })
-            .then(r => r.json())
-            .then(data => console.log(data))
-}
-
-const onDeleteRequest = (id) => {
-    fetch(`http://localhost:9292/restaurant-requests/${id}`,{
-        method: "DELETE"
-    })
-        .then(res => res.json())
-        .then(data => console.log(data))
 }
 
     const renderRequests = requests.map(request => {
@@ -37,8 +27,8 @@ const onDeleteRequest = (id) => {
                 id={id}
                 name={name}
                 location={location}
-                onUpvoteClick={onUpvoteClick}
-                onDeleteRequest={onDeleteRequest}
+                upvoteClick={onUpvoteClick}
+                deleteRequest={deleteRequest}
                 />
         )
     })
