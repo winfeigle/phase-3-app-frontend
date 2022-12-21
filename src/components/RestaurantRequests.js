@@ -20,6 +20,14 @@ function RestaurantRequests({requests}){
             .then(data => console.log(data))
 }
 
+const onDeleteRequest = (id) => {
+    fetch(`http://localhost:9292/restaurant-requests/${id}`,{
+        method: "DELETE"
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
+}
+
     const renderRequests = requests.map(request => {
         const {id, name, location} = request;
 
@@ -30,6 +38,7 @@ function RestaurantRequests({requests}){
                 name={name}
                 location={location}
                 onUpvoteClick={onUpvoteClick}
+                onDeleteRequest={onDeleteRequest}
                 />
         )
     })
