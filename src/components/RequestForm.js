@@ -17,41 +17,33 @@ function RequestForm({updateRequests, upvoteClick}){
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
-
-        // console.log(formData)
-        fetch(`http://localhost:9292/restaurant-requests`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(formData)
+        updateRequests(formData)
+        setFormData({
+            name: "",
+            location: ""
         })
-            .then(res => res.json())
-            .then(newRequest => {
-                upvoteClick(newRequest.id)
-                
-            })
     }
 
     return(
         <section className="request-form-container">
             <h3>Make a Request</h3>
             <form id="request-form" onSubmit={handleFormSubmit}>
-                <label>Restaurant
+                <label>Restaurant:
                     <input 
                         onChange={handleChange}
                         type="text"
-                        placeholder="Papa John's"
+                        placeholder="Name"
                         name="name"
+                        value={formData.name}
                         />
                 </label>
-                <label>Location
+                <label>Location:
                     <input 
                         onChange={handleChange}
                         type="text"
                         placeholder="City, ST"
                         name="location"
+                        value={formData.location}
                         />
                 </label>
                 <button type="submit">Submit Request</button>

@@ -20,16 +20,17 @@ function App() {
   }, []);
 
   const onDeleteRequest = (deleteId) => {
-    setRequests((requests) => requests.filter(request => request.id !== deleteId))
-    fetch(`http://localhost:9292/restaurant-requests/${deleteId}`, {
-      method: "DELETE"
-  })
+      setRequests((requests) => requests.filter(request => request.id !== deleteId))
+      fetch(`http://localhost:9292/restaurant-requests/${deleteId}`, {
+        method: "DELETE"
+    })
   }
 
-  const onUpdateRequests = (newRequest) => {
-    // New request submission should rerender page
+  const onUpdateRequests = () => {
+    fetch(`http://localhost:9292/restaurant-requests`)
+      .then(res => res.json())
+      .then(setRequests);
   }
-
 
   return (
     <div className="App">
