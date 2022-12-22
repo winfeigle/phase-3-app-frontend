@@ -1,6 +1,11 @@
 import React from "react";
 
-function MealPlans({mealPlans}){
+function MealPlans({mealPlans, addSubscriber}){
+
+    const handleSubscribeClick = (e) => {
+        const mealPlanId = e.target.value
+        addSubscriber(mealPlanId)
+    }
 
 
     const renderMealplan = mealPlans.map(plan => {
@@ -22,7 +27,7 @@ function MealPlans({mealPlans}){
                 </div>
                 
                 <div className="mealplan-subscribe">
-                    <button>Subscribe</button>
+                    <button onClick={handleSubscribeClick} value={id}>Subscribe</button>
                 </div>
             </div>
         )

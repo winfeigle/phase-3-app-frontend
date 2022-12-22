@@ -43,7 +43,7 @@ function RestaurantRequests({requests, deleteRequest, updateRequests}){
                     updateRequests()
             })
         } else{
-            alert("This restaurant has already been added!")
+            alert("This restaurant has already been added, upvote it!")
         }
     }
 

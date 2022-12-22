@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, {useState} from "react";
 import MealPlans from "./MealPlans";
 
 function RestaurantCard({restaurant}){
-    let {id, name, address, tag, logo_url, image_url, bio, subscribers} = restaurant;
-    const [mealPlans, setMealPlans] = useState([]);
+    let {name, address, tag, logo_url, image_url, bio, meal_plans} = restaurant;
 
-    useEffect(() => {
-        fetch(`http://localhost:9292/restaurants/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setMealPlans(data.meal_plans)
-            })
-      }, [id]);
+    const sumSubscribers = () => {
+        let counter = 0;
+        meal_plans.forEach(plan => {
+            counter = counter + plan.subscribers
+            return counter;
+        })
+        return counter;
+    }
 
+    const [subscriberCount, setSubscriberCount] = useState(sumSubscribers());
 
     return(
         <div className="restaurant-card">
@@ -26,14 +27,14 @@ function RestaurantCard({restaurant}){
             </div>
             <div className="restaurant-info-container">
                 <span className="restaurant-stats">
-                    <b>{`${mealPlans.length}`}&nbsp;</b><p>Meal Plans</p>
-                    <b>{`${subscribers}`}&nbsp;</b><p>Subscribers</p>
+                    <b>{`${meal_plans.length}`}&nbsp;</b><p>Meal Plans</p>
+                    <b>{subscriberCount}&nbsp;</b><p>Subscribers</p>
                 </span>
                 <span className="address">{address}</span>  
                 <span className="bio">{bio}</span>  
             </div>
             <MealPlans
-                mealPlans={mealPlans}
+                mealPlans={meal_plans}
                 />
         </div>
     );
