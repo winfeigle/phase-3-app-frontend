@@ -2,18 +2,28 @@ import React, {useState} from "react";
 import MealPlans from "./MealPlans";
 
 function RestaurantCard({restaurant}){
-    let {name, address, tag, logo_url, image_url, bio, meal_plans} = restaurant;
+    let {id, name, address, tag, logo_url, image_url, bio} = restaurant;
+
+    const [mealPlans, setMealPlans] = useState(restaurant.meal_plans);
+    
 
     const sumSubscribers = () => {
         let counter = 0;
-        meal_plans.forEach(plan => {
+        mealPlans.map(plan => {
             counter = counter + plan.subscribers
             return counter;
         })
         return counter;
     }
 
-    const [subscriberCount, setSubscriberCount] = useState(sumSubscribers());
+    const [subscriberCount, setSubscriberCount] = useState(sumSubscribers);
+
+    const updateMealPlans = () => {
+        fetch(`http://localhost:9292/restaurants/${id}/meal-plans`)
+        .then(res => res.json())
+        .then(setMealPlans)
+    }
+
 
     const onAddSubscriber = (mealPlanId, currentSubs) => {
         fetch(`http://localhost:9292/meal-plans/${mealPlanId}`, {
@@ -27,7 +37,8 @@ function RestaurantCard({restaurant}){
             })
         })
             .then(res => res.json())
-            .then(setSubscriberCount((subscriberCount) => subscriberCount++))
+            .then(updateMealPlans)
+            .then(setSubscriberCount((subscriberCount) => subscriberCount + 1))
     }
 
     return(
@@ -42,15 +53,16 @@ function RestaurantCard({restaurant}){
             </div>
             <div className="restaurant-info-container">
                 <span className="restaurant-stats">
-                    <b>{`${meal_plans.length}`}&nbsp;</b><p>Meal Plans</p>
+                    <b>{`${mealPlans.length}`}&nbsp;</b><p>Meal Plans</p>
                     <b>{subscriberCount}&nbsp;</b><p>Subscribers</p>
                 </span>
                 <span className="address">{address}</span>  
                 <span className="bio">{bio}</span>  
             </div>
             <MealPlans
-                mealPlans={meal_plans}
+                mealPlans={mealPlans}
                 addSubscriber={onAddSubscriber}
+                updateMealPlans={updateMealPlans}
                 />
         </div>
     );
