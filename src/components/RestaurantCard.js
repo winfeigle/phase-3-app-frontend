@@ -15,6 +15,21 @@ function RestaurantCard({restaurant}){
 
     const [subscriberCount, setSubscriberCount] = useState(sumSubscribers());
 
+    const onAddSubscriber = (mealPlanId, currentSubs) => {
+        fetch(`http://localhost:9292/meal-plans/${mealPlanId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                subscribers: currentSubs + 1
+            })
+        })
+            .then(res => res.json())
+            .then(setSubscriberCount((subscriberCount) => subscriberCount++))
+    }
+
     return(
         <div className="restaurant-card">
             <p className="tag">{tag}</p>
@@ -35,6 +50,7 @@ function RestaurantCard({restaurant}){
             </div>
             <MealPlans
                 mealPlans={meal_plans}
+                addSubscriber={onAddSubscriber}
                 />
         </div>
     );

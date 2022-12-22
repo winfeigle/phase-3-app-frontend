@@ -1,15 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 
 function MealPlans({mealPlans, addSubscriber}){
+    const [isSubscribed, setIsSubscribed] = useState(false);
 
     const handleSubscribeClick = (e) => {
-        const mealPlanId = e.target.value
-        addSubscriber(mealPlanId)
+        setIsSubscribed(!isSubscribed)
+        const mealPlanId = parseInt(e.target.value.split(",")[0]);
+        const currentSubs = parseInt(e.target.value.split(",")[1]);
+        addSubscriber(mealPlanId, currentSubs);
     }
 
 
     const renderMealplan = mealPlans.map(plan => {
-        const {id, name, number_of_meals, price } = plan;
+        const {id, name, number_of_meals, price, subscribers } = plan;
         return(
             <div key={id} className="mealplan">
                 <div className="mealplan-card">
@@ -27,7 +30,7 @@ function MealPlans({mealPlans, addSubscriber}){
                 </div>
                 
                 <div className="mealplan-subscribe">
-                    <button onClick={handleSubscribeClick} value={id}>Subscribe</button>
+                    <button className={isSubscribed ? "subscribed" : "not-subscribed"} onClick={handleSubscribeClick} value={[id, subscribers]}>Subscribe</button>
                 </div>
             </div>
         )

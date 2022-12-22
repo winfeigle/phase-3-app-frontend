@@ -287,6 +287,10 @@ button.downvote, button.upvotes{
         transition: 200ms;
       }
 
+      .mealplan-subscribe button.subscribe{
+        transition: 500ms;
+      }
+
       .mealplan-subscribe button.subscribed{
         background-color: #665BF7;
         color: white;
