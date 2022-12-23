@@ -16,12 +16,13 @@ This mini app is based on the Feedplan Restaurant Subscription App, it features 
 - Users can upvote and downvote any restaurant request, a downvote simply removes the first upvote from the database, and the upvote number is rerendered.
 - If the upvote count for a particular request drops below 1 , the request is removed from the database.
 
-![image](public/RestaurantRequests.png)
+  ![image](public/RestaurantRequests.png)
 
 **Active Restaurants**, that are currently featured on the Feedplan mobile app and showcases their available meal plans, subscriber counts, location, and additional info all fetched from backend API.
 
 - When a user subscribes to a particular meal plan associated with a restaurant, the total subscriber count for the restaurant increases by 1.
 - Each meal plan for each restaurant has an associated # number subscribers, and only the total for the restaurant is shown. Each Active Restaurant Card is rendered from data received from the Sinatra API.
+
   ![image](public/ActiveRestaurants.png)
 
 For more information on (the real) Feedplan App, check out the [Feedplan website](www.feedplan.io).
