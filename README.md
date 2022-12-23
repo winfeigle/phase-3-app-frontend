@@ -25,6 +25,6 @@ This mini app is based on the Feedplan Restaurant Subscription App, it features 
 
   ![image](public/ActiveRestaurants.png)
 
-For more information on (the real) Feedplan App, check out the [Feedplan website](www.feedplan.io).
+For more information on (the real) Feedplan App, check out the [Feedplan website](https://www.feedplan.io/).
 
 Created by **[Win Feigle](linkedin.com/in/feigle)**
