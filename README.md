@@ -6,6 +6,8 @@
 
 - Routes in frontend and backend follow RESTful conventions.
 
+Backend available here: [Phase 3 Sinatra Backend](https://github.com/winfeigle/phase-3-sinatra-react-project)
+
 ## **The Feedplan mini app:**
 
 This mini app is based on the Feedplan Restaurant Subscription App, it features two main sections that relate to the Feedplan mobile app:
