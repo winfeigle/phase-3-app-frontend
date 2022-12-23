@@ -32,7 +32,7 @@ function RequestCard({id, name, location, upvoteClick, deleteRequest}){
         <div className="restaurant-request-card">
             <span className="restaurant-info">
                 <h3>{name}</h3>
-                <p>({location})</p>
+                <p>{location}</p>
             </span>
             <span className="restaurant-voting">
                 <button onClick={handleUpvoteClick} className="upvotes" value={voteCount}>
