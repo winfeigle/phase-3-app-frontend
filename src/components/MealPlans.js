@@ -32,7 +32,7 @@ function MealPlans({mealPlans, addSubscriber, updateMealPlans}){
                 </div>
                 
                 <div className="mealplan-subscribe">
-                    <button onClick={handleSubscribeClick} value={[id, subscribers]}>Subscribe</button>
+                    <button type="button" className="btn btn-primary" onClick={handleSubscribeClick} value={[id, subscribers]}>Subscribe</button>
                 </div>
             </div>
         )
