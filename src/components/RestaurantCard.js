@@ -19,9 +19,9 @@ function RestaurantCard({restaurant}){
     const [subscriberCount, setSubscriberCount] = useState(sumSubscribers);
 
     const updateMealPlans = () => {
-        fetch(`http://localhost:9292/restaurants/${id}/meal-plans`)
+        fetch(`http://localhost:9292/restaurants/${id}`)
         .then(res => res.json())
-        .then(setMealPlans)
+        .then(data => setMealPlans(data.meal_plans))
     }
 
 

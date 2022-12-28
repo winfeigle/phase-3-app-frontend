@@ -48,7 +48,7 @@ function RestaurantRequests({requests, deleteRequest, updateRequests}){
     }
 
     const renderRequests = requests.map(request => {
-        const {id, name, location} = request;
+        const {id, name, location, restaurant_votes} = request;
 
         return(
             <RequestCard 
@@ -56,6 +56,7 @@ function RestaurantRequests({requests, deleteRequest, updateRequests}){
                 id={id}
                 name={name}
                 location={location}
+                restaurant_votes={restaurant_votes}
                 upvoteClick={onUpvoteClick}
                 deleteRequest={deleteRequest}
                 />

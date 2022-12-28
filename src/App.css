@@ -33,6 +33,11 @@ h3{
   color: white;
 }
 
+#header-logo{
+  width: 150px;
+  margin-top: 50px;
+}
+
 .App-link {
   color: #61dafb;
 }
