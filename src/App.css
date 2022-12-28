@@ -33,6 +33,11 @@ h3{
   color: white;
 }
 
+#header-logo{
+  width: 150px;
+  margin-top: 50px;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -47,17 +52,9 @@ body{
   display: flexbox;
 }
 
-
-.restaurant-requests-container{
-  /* border: solid black 1px; */
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 1.5rem;
-}
-
 .request-form-container{
   width: 20%;
+  min-width: 250px;
 }
 
 #request-form{
@@ -98,6 +95,42 @@ body{
   transition: 200ms;
 }
 
+.restaurant-requests-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+  button.downvote, button.upvotes{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 95%;
+    transition: 250ms;
+  }
+
+    button.downvote{
+      margin-top: 5px;
+    }
+
+  button.upvotes:hover{
+    background-color: rgb(185, 252, 185); 
+    color: green;
+    transition: 250ms;
+    width: 100%;
+  }
+
+  button.downvote:hover{
+    background-color: lightpink;
+    color: darkred;
+    transition: 250ms;
+    width: 100%;
+  }
+
+
 
 
 .restaurant-request-card{
@@ -105,11 +138,19 @@ body{
   border-radius: 10px;
   margin: 1rem;
   padding: 1rem;
-  display: inline-flex;
+  display: flexbox;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  transition: 250ms;
 }
+
+/* .restaurant-request-card:hover{
+  margin: 1rem;
+  padding: 1rem 1.5rem;
+  transition: 500ms;
+  
+} */
 
 h2#top-requests{
   opacity: 20%;
@@ -127,31 +168,14 @@ h2#top-requests{
   opacity: 50%;
 }
 
-button.downvote, button.upvotes{
-  cursor: pointer;
-  width: 100%;
-  margin: 5px;
-}
-
-  button.upvotes{
-      color:#157234;
-    }
-
-  button.downvote{
-    color: darkred;
-  }
-
-
 #form-container{
   max-width: 200px;
   display: block;
 }
 
-
-
 #restaurant-container{
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
