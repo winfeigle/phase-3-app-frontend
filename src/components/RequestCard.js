@@ -9,7 +9,7 @@ function RequestCard({id, name, location, restaurant_votes, upvoteClick, deleteR
       }
 
       const handleDownvoteClick = () => {
-        fetch(`http://localhost:9292/restaurant-requests/votes/${id}`, {
+        fetch(`http://localhost:9292/restaurant-votes/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -21,6 +21,7 @@ function RequestCard({id, name, location, restaurant_votes, upvoteClick, deleteR
                 }
             })
       }
+
 
 
     return(
