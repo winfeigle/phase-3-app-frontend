@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function RequestForm({updateRequests, upvoteClick}){
+function RequestForm({updateRequests}){
     const [formData, setFormData] = useState({
         name: "",
         location: "",

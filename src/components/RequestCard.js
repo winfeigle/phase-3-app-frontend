@@ -1,13 +1,8 @@
 import React, {useState} from "react";
 
-function RequestCard({id, name, location, upvoteClick, deleteRequest}){
-    const [voteCount, setVoteCount] = useState([])
+function RequestCard({id, name, location, restaurant_votes, upvoteClick, deleteRequest}){
+    const [voteCount, setVoteCount] = useState(restaurant_votes.length)
 
-    fetch(`http://localhost:9292/restaurant-requests/count/${id}`)
-        .then(res => res.json())
-        .then(setVoteCount);
-      
-    
       const handleUpvoteClick = () => {
         setVoteCount((voteCount) => voteCount + 1)
         upvoteClick(id)
